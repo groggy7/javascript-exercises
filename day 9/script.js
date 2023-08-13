@@ -57,9 +57,7 @@ console.log(newMap)
 }*/
 
 //Use map to create an array of countries length from countries array.
-const lengthMap = countries.map(element => {
-    return element.length
-})
+const lengthMap = countries.map(element => element.length)
 console.log(lengthMap)
 
 //Use map to create a new array by changing each number to square in the numbers array
@@ -282,35 +280,99 @@ console.log(findMostFrequentLetter(countryList))
 
 //Use the countries information, in the data folder. Sort countries by name, by capital, by population
 
-import { extendedCountries } from "./data/countries.js"
-
+import { extendedCountries } from "./countries_data.js"
 
 //The sort() function expects a numerical value or zero to determine the order of the elements.
 //You should return a negative, positive, or zero value based on the comparison.
 
-extendedCountries.sort((former, latter) => {
-    if(former.country < latter.country) {
-        return -1
-    } else {
-        return 1
-    }
-})
-console.log(extendedCountries)
+let sortedByName = [...extendedCountries].sort((former, latter) => (former.name < latter.name ? -1 : 1))
+console.log(sortedByName)
 
-extendedCountries.sort((former, latter) => {
-    if(former.capital < latter.capital) {
-        return -1
-    } else {
-        return 1
-    }
-})
-console.log(extendedCountries)
+let sortedByCapital = [...extendedCountries].sort((former, latter) => (former.capital < latter.capital ? -1 : 1))
+console.log(sortedByCapital)
 
-extendedCountries.sort((former, latter) => {
-    if(former.population < latter.population) {
-        return -1
-    } else {
-        return 1
-    }
-})
-console.log(extendedCountries)
+let sortedByPopulation = [...extendedCountries].sort((former, latter) => (former.population < latter.population ? -1 : 1))
+console.log(sortedByPopulation)
+
+/*Spread syntax (...) for more: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+Spread in array literals
+const parts = ["shoulders", "knees"];
+const lyrics = ["head", ...parts, "and", "toes"];
+//  ["head", "shoulders", "knees", "and", "toes"]
+
+Copy an array
+const arr = [1, 2, 3]
+const arr2 = [...arr]
+
+arr2.push(4);
+//  arr2 becomes [1, 2, 3, 4], arr remains unaffected
+
+A better way to concatenate arrays
+let arr1 = [0, 1, 2]; 
+const arr2 = [3, 4, 5];
+--> instead of: arr1 = arr1.concat(arr2);
+arr1 = [...arr1, ...arr2];
+*/
+
+//Find the 10 most spoken languages:
+function findMostSpokenLanguages(countries, count) {
+    let result = countries.reduce((acc, country) => {
+        for(let i = 0; i < country.languages.length; i++) {
+            acc[country.languages[i]] = (acc[country.languages[i]] || 0) + 1
+        }
+        return acc
+    }, {})
+    
+    //console.log(Object.keys(result)) --> ['Spanish', 'Guaraní', 'Azerbaijani', 'English', 'Portuguese', '...]
+    let languageList = Object.keys(result).map((language) => ({
+        country: language,
+        count: result[language]
+    }))
+
+    languageList.sort((former, latter) => {
+        return former.count > latter.count ? -1 : 1
+    })
+    return languageList.slice(0, count)
+}
+console.log(findMostSpokenLanguages(extendedCountries, 5))
+
+/*
+Try to develop a program which calculate measure of central tendency of a sample(mean, median, mode) 
+and measure of variability(range, variance, standard deviation). 
+In addition to those measures find the min, max, count, percentile, and frequency distribution of the sample. 
+You can create an object called statistics and create all the functions which do statistical calculations
+as method for the statistics object. Check the output below.
+*/
+
+/*
+const ages = [31, 26, 34, 37, 27, 26, 32, 32, 26, 27, 27, 24, 32, 33, 27, 25, 26, 38, 37, 31, 34, 24, 33, 29, 26]
+
+console.log('Count:', statistics.count()) // 25
+console.log('Sum: ', statistics.sum()) // 744
+console.log('Min: ', statistics.min()) // 24
+console.log('Max: ', statistics.max()) // 38
+console.log('Range: ', statistics.range() // 14
+console.log('Mean: ', statistics.mean()) // 30
+console.log('Median: ',statistics.median()) // 29
+console.log('Mode: ', statistics.mode()) // {'mode': 26, 'count': 5}
+console.log('Variance: ',statistics.var()) // 17.5
+console.log('Standard Deviation: ', statistics.std()) // 4.2
+console.log('Variance: ',statistics.var()) // 17.5
+console.log('Frequency Distribution: ',statistics.freqDist()) # [(20.0, 26), (16.0, 27), (12.0, 32), (8.0, 37), 
+(8.0, 34), (8.0, 33), (8.0, 31), (8.0, 24), (4.0, 38), (4.0, 29), (4.0, 25)]
+
+
+console.log(statistics.describe())
+Count: 25
+Sum:  744
+Min:  24
+Max:  38
+Range:  14
+Mean:  30
+Median:  29
+Mode:  (26, 5)
+Variance:  17.5
+Standard Deviation:  4.2
+Frequency Distribution: [(20.0, 26), (16.0, 27), (12.0, 32), (8.0, 37), (8.0, 34), (8.0, 33), (8.0, 31), 
+(8.0, 24), (4.0, 38), (4.0, 29), (4.0, 25)]
+*/
