@@ -322,7 +322,7 @@ function findMostSpokenLanguages(countries, count) {
         }
         return acc
     }, {})
-    
+    //console.log(result) --> {Spanish: 5, Guaraní: 1, Azerbaijani: 1, English: 9, Portuguese: 2, …}
     //console.log(Object.keys(result)) --> ['Spanish', 'Guaraní', 'Azerbaijani', 'English', 'Portuguese', '...]
     let languageList = Object.keys(result).map((language) => ({
         country: language,
