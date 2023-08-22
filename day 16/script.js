@@ -180,3 +180,29 @@ const data = JSON.parse(txt, (key, value) => {
     return value
 })
 console.log(skilledPerson)
+
+/*
+Let's focus on the iteration of two users: "Alex" and "Asab".
+
+"Alex" Iteration:
+
+The reviver function is called with key being "Alex" and value being the object containing Alex's details.
+The first if condition checks if key is an empty string, which it's not in this case, so the code doesn't enter this block.
+The second if condition checks if the value.skills property exists and if the length of value.skills 
+(which is 3 for Alex) is greater than maxSkills (which is initially 0).
+Since 3 is greater than 0, the maxSkills variable is updated to 3, and skilledPerson is set to "Alex".
+
+"Asab" Iteration:
+
+The reviver function is called with key being "Asab" and value being the object containing Asab's details.
+The first if condition is not met because key is not an empty string.
+The second if condition checks if the value.skills property exists and if the length of value.skills 
+(which is 8 for Asab) is greater than maxSkills (which is now 3 after processing "Alex").
+Since 8 is greater than 3, the maxSkills variable is updated to 8, and skilledPerson is set to "Asab".
+At the end of these iterations, maxSkills will be 8 (the number of skills held by "Asab"), and skilledPerson will be "Asab".
+
+
+The reviver function is called for each property of the JSON object being parsed, allowing you to 
+perform custom logic during the parsing process. In this case, the reviver function is used to 
+track the person with the most skills while iterating through the users in the JSON object.
+*/
