@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+            color: aliceblue;
+            padding: 20px;
+        }
+
+        .column {
+            width: 31.33%;
+            float: left;
+            padding: 10px;
+            border: 1px solid gray;
+            margin-right: 15px;
+        }
+        
+        .question {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="row"></div>
+    <div class="column">
+    <h1>Exercise 1</h1>
+    <h3 class="question">Store you first name, last name, age, country, city in your browser localStorage.</h3>
+    <p>localStorage.setItem("firstName", "Serhat")</p>
+    <p>localStorage.setItem("lastName", "Hakeri")</p>
+    <p>localStorage.setItem("age", 23)</p>
+    <p>localStorage.setItem("country", "Turkey")</p>
+    <p>localStorage.setItem("city", "Bursa")</p>
+    </div>
+
+    <div class="column">
+    <h1>Exercise 2</h1>
+    <h3 class="question">Create a student object. The student object will have first name, last name, age, skills,
+    country, enrolled keys and values for the keys. Store the student object in your browser localStorage.</h3>
+    <p>const student = { firstName: "Serhat", lastName: "Hakeri", age: 23, skills: ["JS", "Go", "C++"], country: "Turkey" }</p>
+    <p>console.log(student)</p>
+    <p>{firstName: 'Serhat', lastName: 'Hakeri', age: 23, skills: Array(3), country: 'Turkey'}</p>
+    <p>localStorage.setItem("student", student)</p>
+    <p>localStorage.getItem("student")
+    '[object Object]'</p>
+    <p>const studentJSON = JSON.stringify(student, undefined)</p>
+    <p>localStorage.setItem("student", studentJSON)</p>
+    <p>localStorage.getItem("student")
+    '{"firstName":"Serhat","lastName":"Hakeri","age":23,"skills":["JS","Go","C++"],"country":"Turkey"}'        
+    </p>
+    </div>
+
+    <div class="column">
+        <h1>Exercise 3</h1>
+        <h3 class="question">Create an object called personAccount. It has firstname, lastname, incomes, expenses properties 
+            and it has totalIncome, totalExpense, accountInfo,addIncome, addExpense and accountBalance methods. 
+            Incomes is a set of incomes and its description and expenses is also a set of expenses and its description.</h3>
+    </div>
+
+</body>
+</html>
