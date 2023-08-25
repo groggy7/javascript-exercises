@@ -15,8 +15,8 @@ const products = [
 //Explain the difference between forEach, map, filter, and reduce.
 
 /*
-forEach takes a callback function which takes 3 arguments: element, index and array. Index and array are optinal
-we can print elements while iterating over array elements with forEach
+forEach takes a callback function which takes 3 arguments: element, index and array. Index and array are optinal.
+We can print elements while iterating over array elements with forEach
 
 map makes it possible to modify array elements. It takes callback function
 
@@ -24,12 +24,10 @@ filter brings all elements that matches specific conditions
 
 reduce takes a callback function which takes accumulator, current and initial value for accumulator
 we can use current to get current element's value, accumulator to accumulate current's value.
-
 */
 
 //Define a callback function before you use it in forEach, map, filter or reduce.
-
-const callback = (a, b) => { a * b }
+const callback = (a, b) => a * b
 
 //Use forEach to console.log each country in the countries array.
 //Use forEach to console.log each name in the names array.
@@ -221,13 +219,10 @@ console.log(count(countries))
 
 //Declare a getFirstTenCountries function and return an array of ten countries. 
 //Use different functional programming to work on the countries.js array
-
 import { countryList } from "./countries.js"
 
 function getFirstTenCountries(countries) {
-    let ct = countries.filter(country => country[0].toLowerCase() === 't')
-    let first10 = ct.slice(0,10)
-    return first10
+    return countries.slice(0,10)
 }
 console.log(getFirstTenCountries(countryList))
 
@@ -243,7 +238,6 @@ Source Array (array): The array that reduce() is being called upon.
 */
 
 function getLastTenCountries(countries) {
-    // option 1 - return countries.slice(-10)
     return countries.reduce((accumulator, country, index, arr) => {
         if(index >= arr.length - 10) {
             accumulator.push(country)
@@ -261,7 +255,7 @@ function findMostFrequentLetter(countries) {
         acc[firstLetter] = ( acc[firstLetter] || 0) + 1
         return acc
     }, {})
-    
+     
     let mostFrequentLetter = Object.keys(lettersObject).reduce((acc, letter) => {
         return lettersObject[letter] > lettersObject[acc] ? letter : acc
     }, Object.keys(lettersObject)[0])
@@ -330,7 +324,8 @@ function findMostSpokenLanguages(countries, count) {
     }))
 
     languageList.sort((former, latter) => {
-        return former.count > latter.count ? -1 : 1
+        return latter.count - former.count
+        //return former.count > latter.count ? -1 : 1
     })
     return languageList.slice(0, count)
 }
