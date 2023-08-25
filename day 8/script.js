@@ -23,52 +23,44 @@ const person = {
     city: 'Helsinki'
   },
   getPersonInfo: function() {
-  return `I am ${this.firstName} and I live in ${this.city}, ${this.country}. I am ${this.age}.`
-}
+    return `I am ${this.firstName} and I live in ${this.city}, ${this.country}. I am ${this.age}.`
+  }
 }
 
 //Object methods: Object.assign, Object.keys, Object.values, Object.entries
 //hasOwnProperty
-
 const copyPerson = Object.assign({}, person)
 console.log(copyPerson)
 
 
 //Getting object keys using Object.keys()
 //Object.keys: To get the keys or properties of an object as an array
-
 const keys = Object.keys(copyPerson)
 console.log(keys) //['firstName', 'age', 'country','city', 'skills','title', 'address', 'getPersonInfo']
 const address = Object.keys(copyPerson.address)
 console.log(address) //['street', 'pobox', 'city']
 
-/*
-Getting object keys and values using Object.entries()
-Object.entries:To get the keys and values in an array
-*/
 
+//Getting object keys and values using Object.entries()
+//Object.entries:To get the keys and values in an array
 const entries = Object.entries(copyPerson)
 console.log(entries)
 
-/*
-Checking properties using hasOwnProperty()
-hasOwnProperty: To check if a specific key or property exist in an object
-*/
+
+//Checking properties using hasOwnProperty()
+//hasOwnProperty: To check if a specific key or property exist in an object
 console.log(copyPerson.hasOwnProperty("name")) //-->false
 console.log(copyPerson.hasOwnProperty("city")) //-->true
 
 /***************************************************** EXCERCISE 1 *****************************************************/
 
 //Create an empty object called dog
-
 let dog = {}
 
 //Print the the dog object on the console
-
 console.log(dog)
 
 //Add name, legs, color, age and bark properties for the dog object. The bark property is a method which return woof woof
-
 dog.name = "golden"
 dog.legs = 4
 dog.color = "yellow"
@@ -78,7 +70,6 @@ dog.bark = function() {
 }
 
 //Get name, legs, color, age and bark value from the dog object
-
 console.log(dog.name);
 console.log(dog.legs);
 console.log(dog.color);
@@ -86,21 +77,10 @@ console.log(dog.age);
 console.log(dog.bark());
 
 //Set new properties the dog object: breed, getDogInfo
-
 dog.breed = "golden retriever"
 dog.getDogInfo = function() {
     return `${this.name} ${this.legs} ${this.color} ${this.breed}`
-    /*   
-    {
-        name: this.name,
-        legs: this.legs,
-        color: this.color,ha
-        age: this.age,
-        breed: this.breed,
-    }
-    */
 }
-
 console.log(dog.getDogInfo())
 
 /***************************************************** EXCERCISE 1 *****************************************************/
@@ -110,77 +90,74 @@ console.log(dog.getDogInfo())
 
 const users = {
   Alex: {
-      email: 'alex@alex.com',
-      skills: ['HTML', 'CSS', 'JavaScript'],
-      age: 20,
-      isLoggedIn: false,
-      points: 30
-    },
-    Asab: {
-      email: 'asab@asab.com',
-      skills: ['HTML', 'CSS', 'JavaScript', 'Redux', 'MongoDB', 'Express', 'React', 'Node'],
-      age: 25,
-      isLoggedIn: false,
-      points: 50
-    },
-    Brook: {
-      email: 'daniel@daniel.com',
-      skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Redux'],
-      age: 30,
-      isLoggedIn: true,
-      points: 50
-    },
-    Daniel: {
-      email: 'daniel@alex.com',
-      skills: ['HTML', 'CSS', 'JavaScript', 'Python'],
-      age: 20,
-      isLoggedIn: false,
-      points: 40
-    },
-    John: {
-      email: 'john@john.com',
-      skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Redux', 'Node.js'],
-      age: 20,
-      isLoggedIn: true,
-      points: 50
-    },
-    Thomas: {
-      email: 'thomas@thomas.com',
-      skills: ['HTML', 'CSS', 'JavaScript', 'React'],
-      age: 20,
-      isLoggedIn: false,
-      points: 40
-    },
-    Paul: {
-      email: 'paul@paul.com',
-      skills: ['HTML', 'CSS', 'JavaScript', 'MongoDB', 'Express', 'React', 'Node'],
-      age: 20,
-      isLoggedIn: false,
-      points: 40
-    }
+    email: 'alex@alex.com',
+    skills: ['HTML', 'CSS', 'JavaScript'],
+    age: 20,
+    isLoggedIn: false,
+    points: 30
+  },
+  Asab: {
+    email: 'asab@asab.com',
+    skills: ['HTML', 'CSS', 'JavaScript', 'Redux', 'MongoDB', 'Express', 'React', 'Node'],
+    age: 25,
+    isLoggedIn: false,
+    points: 50
+  },
+  Brook: {
+    email: 'daniel@daniel.com',
+    skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Redux'],
+    age: 30,
+    isLoggedIn: true,
+    points: 50
+  },
+  Daniel: {
+    email: 'daniel@alex.com',
+    skills: ['HTML', 'CSS', 'JavaScript', 'Python'],
+    age: 20,
+    isLoggedIn: false,
+    points: 40
+  },
+  John: {
+    email: 'john@john.com',
+    skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Redux', 'Node.js'],
+    age: 20,
+    isLoggedIn: true,
+    points: 50
+  },
+  Thomas: {
+    email: 'thomas@thomas.com',
+    skills: ['HTML', 'CSS', 'JavaScript', 'React'],
+    age: 20,
+    isLoggedIn: false,
+    points: 40
+  },
+  Paul: {
+    email: 'paul@paul.com',
+    skills: ['HTML', 'CSS', 'JavaScript', 'MongoDB', 'Express', 'React', 'Node'],
+    age: 20,
+    isLoggedIn: false,
+    points: 40
+  }
 }                             
   
 //Find the person who has many skills in the users object.
-
 let maxSkills = 0
 let user = ""
 for (const person in users) {
     if(users[person].skills.length > maxSkills) {
-      maxSkills =  users[person].skills.length
+      maxSkills = users[person].skills.length
       user = person
     }
 }
 console.log(user, maxSkills)
 
 //Count logged in users, count users having greater than equal to 50 points from the following object.
-
 let loggedInUsers = 0
 for (const user in users) {
   if(users[user].isLoggedIn == true) {
     loggedInUsers++
   }
 }
-
 console.log(loggedInUsers)
 
 let highPointUsers = 0
@@ -193,26 +170,16 @@ console.log(highPointUsers)
 
 //Find people who are MERN stack developer from the users object
 //MongoDB, Express, React, Node.js
-
 let mernDev = []
 for (const user in users) {
     skills = users[user].skills
     if (skills.includes("MongoDB") && skills.includes("Express") && skills.includes("React") && skills.includes("Node")) {
         mernDev.push(user)
-    }let mernDev = []
-    for (const user in users) {
-        skills = users[user].skills
-        if (skills.includes("MongoDB") && skills.includes("Express") && skills.includes("React") && skills.includes("Node")) {
-            mernDev.push(user)
-        }
     }
-    console.log(mernDev)
-    
 }
 console.log(mernDev)
 
 //Set your name in the users object without modifying the original users object
-
 copyUsers = Object.assign({}, users)
 copyUsers.Serhat = {
   email: "serhatkilbas127@gmail.com",
@@ -371,14 +338,14 @@ const products = [
 }
 ]
 
-//Create a function called signUp which allows user to add to the collection. ,
+//Create a function called signUp which allows user to add to the collection.
 //If user exists, inform the user that he has already an account.
 
 const signUp = (user) => {
   let isExistingUser = false
   for (let i = 0; i < _users.length; i++) {
-    const object = _users[i]
-    if ( object.username == user.username) {
+    const _user = _users[i]
+    if ( _user.username == user.username) {
       console.log("user already exists.")
       isExistingUser = true
     }
