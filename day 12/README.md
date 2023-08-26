@@ -124,7 +124,7 @@ console.log(result)
 *replace()*: Executes a search for a match in a string, and replaces the matched substring with a replacement substring.
 
 ```js
-const txt = 'Python is the most beautiful language that a human begin has ever created.\
+const txt = 'Python is the most beautiful language that a human being has ever created.\
 I recommend python for a first programming language'
 
 matchReplaced = txt.replace(/Python|python/, 'JavaScript')
@@ -132,11 +132,11 @@ console.log(matchReplaced)
 ```
 
 ```sh
-JavaScript is the most beautiful language that a human begin has ever created.I recommend python for a first programming language
+JavaScript is the most beautiful language that a human being has ever created.I recommend python for a first programming language
 ```
-
+The difference when we use g flag
 ```js
-const txt = 'Python is the most beautiful language that a human begin has ever created.\
+const txt = 'Python is the most beautiful language that a human being has ever created.\
 I recommend python for a first programming language'
 
 matchReplaced = txt.replace(/Python|python/g, 'JavaScript')
@@ -144,11 +144,11 @@ console.log(matchReplaced)
 ```
 
 ```sh
-JavaScript is the most beautiful language that a human begin has ever created.I recommend JavaScript for a first programming language
+JavaScript is the most beautiful language that a human being has ever created.I recommend JavaScript for a first programming language
 ```
 
 ```js
-const txt = 'Python is the most beautiful language that a human begin has ever created.\
+const txt = 'Python is the most beautiful language that a human being has ever created.\
 I recommend python for a first programming language'
 
 matchReplaced = txt.replace(/Python/gi, 'JavaScript')
@@ -156,11 +156,10 @@ console.log(matchReplaced)
 ```
 
 ```sh
-JavaScript is the most beautiful language that a human begin has ever created.I recommend JavaScript for a first programming language
+JavaScript is the most beautiful language that a human being has ever created.I recommend JavaScript for a first programming language
 ```
 
 ```js
-
 const txt = '%I a%m te%%a%%che%r% a%n%d %% I l%o%ve te%ach%ing.\
 T%he%re i%s n%o%th%ing as m%ore r%ewarding a%s e%duc%at%i%ng a%n%d e%m%p%ow%er%ing \
 p%e%o%ple.\
@@ -205,7 +204,7 @@ I am teacher and  I love teaching.There is nothing as more rewarding as educatin
   * r'apple|banana' mean either of an apple or a banana
 * (): Capture and group
 
-![Regular Expression cheat sheet](../images/regex.png)
+![Regular Expression cheat sheet](images/regex.png)
 
 Let's use example to clarify the above meta characters
 
@@ -223,7 +222,6 @@ console.log(matches)
 
 ```sh
 ["Apple", index: 0, input: "Apple and banana are fruits. An old cliche says an apple a day keeps the  doctor way has been replaced by a banana a day keeps the doctor far far away.", groups: undefined]
-
 ```
 
 ```js
