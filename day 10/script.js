@@ -6,20 +6,20 @@ const languages = [
     'Spanish',
     'English',
     'French',
-  ]
-  const langSet = new Set(languages)
-  console.log(langSet) // Set(4) {"English", "Finnish", "French", "Spanish"}
-  console.log(langSet.size) // 4
+]
+const langSet = new Set(languages)
+console.log(langSet) // Set(4) {"English", "Finnish", "French", "Spanish"}
+console.log(langSet.size) // 4
   
-  const counts = []
-  const count = {}
+const counts = []
+const count = {}
   
-  for (const l of langSet) {
-    const filteredLang = languages.filter((lng) => lng === l)
-    console.log(filteredLang) // ["English", "English", "English"]
-    counts.push({ lang: l, count: filteredLang.length })
-  }
-  console.log(counts)
+for (const l of langSet) {
+  const filteredLang = languages.filter((lng) => lng === l)
+  console.log(filteredLang) // ["English", "English", "English"]
+  counts.push({ lang: l, count: filteredLang.length })
+}
+console.log(counts)
 
 /***************************************************** EXCERCISE 1 *****************************************************/
 
@@ -138,21 +138,13 @@ console.log(mostSpokenLanguages(countries, 3))
 
 function mostSpokenLanguages(countries, count) {
     let languageMap = new Map()
-    for(let i = 0; i < extendedCountries.length; i++) {
-        for(let j = 0; j < extendedCountries[i].languages.length; j++) {
-            const language = extendedCountries[i].languages[j]
-
-            if(!languageMap.has(language)) {
-                languageMap.set(language, 1)
-            } else {
-                languageMap.set(language, languageMap.get(language) + 1)
-            }
-        }
-    }
+    countries.forEach((country) => {
+        country.languages.forEach((langauge) => {
+            languageMap.set(langauge, (languageMap.get(langauge) || 0) + 1)
+        })
+    });
     const sortedEntries = [...languageMap.entries()].sort((a, b) => b[1] - a[1]);
-    const topXEntries = sortedEntries.slice(0, count);
-    return topXEntries;
-
+    return sortedEntries.slice(0, count);
 }
 
 console.log(mostSpokenLanguages(extendedCountries, 5))
