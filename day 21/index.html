@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id='p1'>Lorem ipsum dolar amet.</p>
+    <p id="p2">Lorem ipsum dolar amet.</p>
+    <p id="p3">Lorem ipsum dolar amet.</p>
+    <p id="p4">Lorem ipsum dolar amet.</p>
+
+    <!--Create an index.html file and put four p elements as above: 
+    Get the first paragraph by using document.querySelector(tagname) and tag name-->
+    <script>
+        let selected = document.querySelector('p')
+        console.log(selected.textContent)
+    </script>
+    
+    <!--Get each of the the paragraph using document.querySelector('#id') and by their id-->
+    <script>
+        let p1 = document.querySelector('#p1')
+        let p2 = document.querySelector('#p2')
+        let p3 = document.querySelector('#p3')
+        let p4 = document.querySelector('#p4')
+    </script>
+
+    <!--Get all the p as nodeList using document.querySelectorAll(tagname) 
+        and by their tag name-->
+    <script>
+        let nodeList = document.querySelectorAll('p')
+    </script>
+
+    <!--Loop through the nodeList and get the text content of each paragraph-->
+    <script>
+        nodeList.forEach(paragraph => console.log(paragraph))
+    </script>
+
+    <!--Set a text content to paragraph the fourth paragraph,Fourth Paragraph-->
+    <script>
+        p4.textContent = 'Fourth Paragraph'
+    </script>
+
+    <!--Set id and class attribute for all the paragraphs using different attribute setting methods-->
+    <script>
+        p1.setAttribute('class', 'paragraph')
+        p2.classList.add('paragraph')
+        p3.id = 'p3-id'
+        p4.className = 'p4-paragraph'
+        p4.setAttribute('id', 'p4-id')
+    </script>
+
+    <!--Change stye of each paragraph using JavaScript(eg. color, background, border, font-size, font-family)-->
+    <script>
+        p1.style.color = 'red'
+        p2.style.background = 'gray'
+        p3.style.border = '1px solid black'
+        p3.style.fontSize = '24px'
+        p4.style.fontFamily = 'Georgia, serif'
+    </script>
+
+    <!--Select all paragraphs and loop through each elements and give the first and third paragraph a color of green, 
+    and the second and the fourth paragraph a red color-->
+    <script>
+        let all = document.querySelectorAll('p')
+        all.forEach((element, index) => {
+            if (index % 2 == 0) {
+                element.style.color = 'red'
+            } else {
+                element.style.color = 'green'
+            }
+        });
+    </script>    
+
+    <!--Set text content, id and class to each paragraph-->
+    <script>
+        p1.textContent = 'text content changed with textContent'
+        p2.className = 'p4-paragraph'
+        p3.setAttribute('id', 'p4-id')
+    </script>
+</body>
+</html>
