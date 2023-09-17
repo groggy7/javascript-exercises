@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 2</title>
+</head>
+<body>
+    <div id='info' style="font-size: 50px; padding: 5px 10px;
+    position: absolute; top: 50%; left: 50%; transform: translateY(-50%);
+    transform: translateX(-50%);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);">Press any keyboard key</div>
+    
+    <div id='outerdiv' style="font-size: 50px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; height: 100vh;">
+    <div id="pressed" style="margin: 10px; padding: 5px 10px; 
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);"></div>
+
+    <div id="char-code" style="text-align: center; line-height: 50px;"></div>    
+</div>
+    
+    <script>
+    document.addEventListener("keydown", function(event) {
+    var key = event.key;
+
+    const info = document.getElementById('info');
+    info.style.visibility = 'hidden';
+
+    const pressedKey = document.getElementById('pressed');
+    pressedKey.innerHTML = `You pressed <span id='key' style='color: green;'>${key}</span>`;
+
+    const charCode = document.getElementById('char-code');
+    charCode.textContent = event.keyCode;
+    charCode.style.color = 'green'
+    charCode.style.fontSize = '50px'
+})
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 1</title>
+</head>
+<body>
+    <h1 style="color: rgb(63, 184, 63); text-align: center; margin-bottom: 0;">Number Generator</h1>
+    <h2 style="text-align: center; font-weight: inherit; margin-bottom: 0;">30DaysOfJavascript:DOM Day 3</h2>
+    <h3 style="text-align: center; font-weight: inherit;">Author: Serhat Hakeri</h3>
+
+    <div id="input-field" style="width: 800px; margin: 0 auto;">
+    <input type="text" placeholder="Generate more numbers"
+    style="width: 70%; height: 30px; border: 2px solid green;
+    margin-right: 5%;">
+
+    <button style="background-color: rgb(67, 175, 67); color: white; 
+    height: 34px; border: none; width: 20%;">
+    Generate numbers</button>
+    </div>
+
+    <div id="numberField" style="width: 1000px; flex-wrap: wrap; display: flex; align-items: center; margin: 0 auto;"></div>
+
+    <script>
+        function isPrime(number) {
+            if (number <= 1) return false;
+            if (number <= 3) return true;
+
+            if (number % 2 === 0 || number % 3 === 0) return false;
+
+            for (let i = 5; i * i <= number; i += 6) {
+                if (number % i === 0 || number % (i + 2) === 0) return false;
+            }
+
+            return true;
+        }
+
+        function clearWarningMessage() {
+            let warningField = document.getElementById('warningDiv')
+                if (warningField) {
+                    warningField.parentNode.removeChild(warningField)
+                    warningPrinted = false
+                }
+        }
+
+        function clearNumberBox() {
+            let numBox = document.getElementById('numberField')
+            numBox.innerHTML = ''
+        }
+
+        function setColor(number) {
+            if(isPrime(number)) {
+                return 'red'
+            } else if(number%2 == 0) {
+                return 'green'
+            } else {
+                return 'yellow'
+            }
+        }
+
+        const button = document.querySelector('button')
+        const input = document.querySelector('input')
+        let div = document.getElementById('input-field')
+        let emptyInputWarning = false
+        let nanWarning = false
+
+        button.addEventListener('click', (e) => {
+            if(input.value === '') {
+                clearWarningMessage()
+
+                let warningBox = document.createElement('div')
+                warningBox.id = 'warningDiv'
+                warningBox.textContent = 'Enter number value on input field to generate numbers'
+                warningBox.style.color = 'red'
+
+                div.insertBefore(warningBox, input)
+                emptyInputWarning = true
+            } else if (isNaN(input.value)) {
+                clearWarningMessage()
+
+                let warningBox = document.createElement('div')
+                warningBox.id = 'warningDiv'
+                warningBox.textContent = 'Input value must be a number'
+                warningBox.style.color = 'red'
+
+                div.insertBefore(warningBox, input)
+                nanWarning = true
+            } else if(Number.isInteger(parseInt(input.value))){
+                clearWarningMessage()
+                clearNumberBox()
+                
+                for (let i = 0; i < parseInt(input.value); i++) {
+                    let numberBox = document.createElement('div')
+                    numberBox.style.width = '70px'
+                    numberBox.style.height = '50px'
+                    numberBox.style.margin = '5px'
+                    numberBox.style.backgroundColor = setColor(i)
+                    numberBox.style.display = 'flex'
+                    numberBox.style.alignItems = 'center'
+                    numberBox.style.justifyContent = 'center'
+                    numberBox.textContent = i
+                    
+                    const numberField = document.getElementById('numberField')
+                    numberField.appendChild(numberBox)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
